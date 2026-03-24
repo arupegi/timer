@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>カラ―タイマー</title>
+<title>タイマー</title>
 <style>
   body {
     margin: 0;
@@ -33,12 +33,9 @@ function updateTimer() {
   let elapsed = (performance.now() - startTime) / 1000;
   document.getElementById("time").textContent = elapsed.toFixed(2) + " 秒";
 
+  // ★ 30秒で青に戻す（止めない）
   if (elapsed >= 30) {
     document.body.style.background = "blue";
-    document.getElementById("time").textContent = "30.00 秒";
-    running = false;
-    state = 0;
-    return;
   }
 
   requestAnimationFrame(updateTimer);
@@ -65,10 +62,8 @@ function nextColor() {
   }
 }
 
-// タップ操作
 document.body.addEventListener("click", nextColor);
 
-// キーボード（iPad外付け用）
 document.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
     nextColor();
