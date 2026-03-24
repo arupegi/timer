@@ -93,7 +93,7 @@ function handleTap() {
 
   // 3連打判定（200ms以内）
   tapTimes.push(now);
-  tapTimes = tapTimes.filter(t => now - t <= 200);
+  tapTimes = tapTimes.filter(t => now - t <= 1000);
 
   if (tapTimes.length >= 3) {
     reset();
